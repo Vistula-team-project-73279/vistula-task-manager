@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Task Manager</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
+<body><main>
+<header><p class="eyebrow">VISTULA · TEAM PROJECT</p><h1>Task Manager</h1><p>A little structure for your next big idea.</p><p>Student ID: <strong id="student-id">73279</strong></p></header>
+<div class="layout"><section class="panel"><h2 id="form-heading">Create a task</h2><form id="task-form">
+<label for="task-title">Title</label><input id="task-title" required maxlength="200" placeholder="What needs to be done?">
+<label for="task-description">Description</label><textarea id="task-description" rows="5" maxlength="10000" placeholder="Add a few details (optional)"></textarea>
+<button id="task-submit" type="submit">Add task</button><button id="cancel-edit" type="button" hidden>Cancel edit</button>
+</form></section><section class="panel"><div class="list-heading"><h2>Your tasks</h2><button id="refresh-tasks" type="button">Refresh</button></div><p id="status-message" role="status" aria-live="polite">Connecting…</p><div id="task-list" aria-label="Tasks"></div></section></div>
+<footer><a id="contribution-link" href="contribution.html">Team contribution ↗</a><p>Built with JavaScript, Supabase &amp; teamwork.</p></footer>
+</main></body></html>
