@@ -2,51 +2,32 @@
 
 Vistula Team Project — Practical Assignment 1. Student ID: **73279**.
 
-Vanilla HTML, CSS and JavaScript with Supabase PostgreSQL and its REST API. Supports viewing, adding, editing, completing and deleting shared demonstration tasks. No login or build step is required.
+## Public resources
 
-## Deployment status
+- Application: https://vistula-team-project-73279.github.io/vistula-task-manager/
+- Repository: https://github.com/Vistula-team-project-73279/vistula-task-manager
+- Contributor page: https://vistula-team-project-73279.github.io/vistula-task-manager/contribution.html
+- Contributor JSON: https://vistula-team-project-73279.github.io/vistula-task-manager/contribution.json
 
-Source uploaded. Supabase configuration, GitHub Pages deployment and both partner PRs are still pending. This is not yet a deployed assignment.
+## Functionality
 
-Required course username: `vistula-team-project-73279`.
-Current account supplied by the student: `RaufJumshudov73279` (not renamed).
+HTML, CSS and JavaScript frontend using the Supabase REST API and PostgreSQL. Display, add, edit, complete/uncomplete and delete tasks. Changes persist after refresh. Required DOM IDs and classes are included. Errors are displayed in status-message. Text is rendered with textContent.
 
-Repository: https://github.com/RaufJumshudov73279/vistula-task-manager
+## Database and deployment
 
-Application URL after Pages is enabled: https://RaufJumshudov73279.github.io/vistula-task-manager/
+The tasks table has an automatically generated BIGINT primary key, required title, optional description and completed BOOLEAN default false. RLS is enabled with public demonstration CRUD policies. Use test data only: visitors share the same task table.
 
-The repository exists. The application URL is not yet a verified deployment. The current account does not meet the assignment's account naming rule.
+config.json contains only the project URL and public publishable key; tableName is tasks. Never publish database passwords, secret keys or service-role keys. supabase.sql documents schema setup for a separate demo project.
 
-## Database setup
+GitHub Pages publishes from main, root. No backend server or build step is needed. API requests use fetch with the apikey header: GET /tasks?select=*, POST /tasks, PATCH /tasks?id=eq.ID and DELETE /tasks?id=eq.ID.
 
-1. Create a separate demonstration Supabase project.
-2. Run `supabase.sql` in its SQL Editor. The four RLS policies permit public demo CRUD; do not store personal or sensitive data.
-3. In `config.json`, set `supabaseUrl` to the project's HTTPS URL and `supabasePublishableKey` to its public `sb_publishable_...` key. Keep `tableName` as `tasks`.
-4. Never put a secret key, service-role key or password in this repository.
+## Team collaboration
 
-## GitHub Pages
+- Incoming contribution by student **73746**, reviewed and merged: https://github.com/Vistula-team-project-73279/vistula-task-manager/pull/1
+- Outgoing contribution by student **73279**: https://github.com/vistula-team-project-73746/vistula-task-manager/pull/1 — awaiting the partner's review and merge.
 
-Create a public repository named exactly `vistula-task-manager`. Upload this directory's contents to the root of `main` (not as a nested directory). In Settings → Pages choose Deploy from a branch, `main`, `/ (root)`, Save. Wait for deployment to finish.
+The incoming PR added contribution.html and contribution.json. Show Contributor fetches the JSON and displays 73746. The outgoing PR adds the same feature to the partner repository with ID 73279; it must be merged by the partner to complete Part B.
 
-For local preview use a static HTTP server, for example `npx --yes http-server .`; opening index.html via file:// cannot reliably load config.json.
+## Validation
 
-## REST API
-
-The application uses `fetch`, the public `apikey` header and `/rest/v1/tasks`: GET with `select=*`, POST to create, PATCH with `id=eq.ID` to edit/toggle, DELETE with `id=eq.ID` to remove. Supabase publishable keys are sent as API keys, not bearer JWTs. Data is rendered with textContent to prevent HTML injection.
-
-## Partner collaboration — pending
-
-Partner repository: https://github.com/vistula-team-project-73746/vistula-task-manager
-
-- Outgoing merged PR (author student 73279): PENDING.
-- Incoming merged PR (author student 73746): PENDING.
-
-The actual partner must create contribution.html and contribution.json in this repository through their own PR. They must put **73746** in contributorStudentId. Do not copy your outgoing files into your own repository.
-
-Prepared outgoing files are supplied separately in `partner-pr-73279` beside this project. Fork the partner repository from your own course account, branch `feature/team-contribution-73279`, copy those two files to its root, commit and open a PR targeting the partner's main. The partner must review and merge it. Review and merge the partner's incoming PR in your own repository. Replace both PENDING entries with the real merged PR URLs.
-
-## Acceptance checks
-
-After configuring and deploying: load the task list; add a task; refresh and verify persistence; edit title and description; mark complete and incomplete; delete and refresh. Check useful error messages with the network disconnected. Verify the contribution link after the incoming PR is merged; click Show Contributor and verify 73746. Check contribution.json directly and confirm both PR URLs in this README.
-
-Submit only the verified live main application URL in Platon after all checks pass.
+Verified on the deployed site: loading from Supabase, creation, persistence after refresh, editing title and description, and completion in both directions. Local mocked API checks also cover deletion, network error reporting and required DOM IDs. See the collaboration status above before submitting only the application URL in Platon.
