@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Contribution</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">VISTULA · TEAM PROJECT</p><h1>Team Contribution</h1></header>
+    <section class="panel" aria-label="Contributor details">
+      <p>Discover the student who contributed this page through a GitHub Pull Request.</p>
+      <button id="load-contributor" type="button">Show Contributor</button>
+      <p id="contributor-student-id" role="status" aria-live="polite"></p>
+    </section>
+    <footer><a href="index.html">Back to Task Manager</a></footer>
+  </main>
+  <script>
+    'use strict';
+    const button = document.getElementById('load-contributor');
+    const output = document.getElementById('contributor-student-id');
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      output.textContent = 'Loading contributor…';
+      try {
+        const response = await fetch('contribution.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Could not load contributor details.');
+        const data = await response.json();
+        if (typeof data.contributorStudentId !== 'string' || !data.contributorStudentId.trim()) {
+          throw new Error('Contributor information is missing.');
+        }
+        output.textContent = 'Contributor Student ID: ' + data.contributorStudentId;
+      } catch (error) {
+        output.textContent = 'Unable to show contributor. Please try again.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
