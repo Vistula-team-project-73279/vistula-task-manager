@@ -24,9 +24,9 @@ GitHub Pages publishes from main, root. No backend server or build step is neede
 ## Team collaboration
 
 - Incoming contribution by student **73746**, reviewed and merged: https://github.com/Vistula-team-project-73279/vistula-task-manager/pull/1
-- Outgoing contribution by student **73279**: https://github.com/vistula-team-project-73746/vistula-task-manager/pull/1 — awaiting the partner's review and merge.
+- Outgoing contribution by student **73279**: https://github.com/vistula-team-project-73746/vistula-task-manager/pull/1 — reviewed and merged by the partner.
 
-The incoming PR added contribution.html and contribution.json. Show Contributor fetches the JSON and displays 73746. The outgoing PR adds the same feature to the partner repository with ID 73279; it must be merged by the partner to complete Part B.
+The incoming PR added contribution.html and contribution.json. Show Contributor fetches the JSON and displays 73746. The outgoing PR adds the same feature to the partner repository with ID 73279; it has been merged by the partner, completing the reciprocal contribution requirement.
 
 ## Validation
 
